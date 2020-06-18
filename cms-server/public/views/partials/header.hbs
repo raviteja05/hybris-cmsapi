@@ -1,0 +1,48 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+</head>
+
+<div class="ui segment">
+    <form method="get" action="/cms" class="ui form"><br>
+        <div class="ui centered grid">
+            <div class="ui row">
+                <div class="ui column">Site Id </div>
+                <div class="ui two wide column">
+                     <select name="siteId" class="ui dropdown">
+
+                        <option value="TH">TH</option>
+                        <option value="SE">SE</option>
+                        <option value="SE_FO">SE_FO</option>
+                        <option value="DK">DK</option>
+                        <option value="NO">NO</option>
+                        <option value="FI">FI</option>
+                        <option value="NL">NL</option>
+                        <option value="BE">BE</option>
+                        <option value="MA">MA</option>
+                        <option value="NL_FO">NL_FO</option>
+                        <option value="BE_FO">BE_FO</option>
+                        <option value="MA_FO">MA_FO</option>
+                        <option value="FR_FO">FR_FO</option>
+                    </select>
+                </div>
+                <div class="ui column">Catalog</div>
+                <div class="ui two wide column">
+                    <div class="ui small input"><input type="text" name="catalog" id="catalog" class="ui input"></div>
+                </div>
+                <div class="ui column">Catalog Version</div>
+                <div class="ui two wide column">
+                    <select name="catalogVersion" class="ui dropdown">
+
+                        <option value="Staged">Staged</option>
+                        <option value="Online">Online</option>
+                    </select>
+                </div>
+                <div class="ui column">Page ID</div>
+                <div class="ui two wide column">
+                    <div class="ui small input"><input type="text" name="pageId" id="pageId" class="ui input"></div>
+                </div>
+                <div class="ui three wide column"><input class="ui button blue" type="submit"></div>
+            </div>
+        </div>
+    </form>
+</div>

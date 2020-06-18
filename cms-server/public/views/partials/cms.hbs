@@ -1,0 +1,19 @@
+<div class="ui raised very padded text container">
+  
+<table class="ui celled table">
+  <thead>
+    <tr><th>Component Id</th>
+    <th>Slot Id</th>
+    <th>Position</th>
+  </tr></thead>
+  <tbody>
+      {{#each data.pageContentSlotComponentList}}
+    <tr>
+      <td data-label="comId"><a href="/cms/{{../siteId}}/{{this.componentUuid}}">{{this.componentId}}</a></td>
+      <td data-label="slotId">{{this.slotId}}</td>
+      <td data-label="pos">{{this.position}}</td>
+    </tr>
+   {{/each}}
+  </tbody>
+</table>
+</div>

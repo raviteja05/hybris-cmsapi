@@ -1,0 +1,16 @@
+<table class="ui celled table">
+
+
+    {{#each cmsItemData}}
+
+    <tr>
+        <td data-label="key">{{@key}}</td>
+        {{#if this.en}}
+        <td data-label="value">{{this.en}}</td>
+        {{else}}
+        <td data-label="value">{{this}}</td>
+        {{/if}}
+    </tr>
+    {{/each}}
+
+</table>
