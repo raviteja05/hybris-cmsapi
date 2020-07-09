@@ -23,8 +23,9 @@ const getOwnerCredentials = oauth.client(axios.create(), {
 
 const auth = async (callback, req, res) => {
   if (cache.get("key") == null) {
-    const auth = await getOwnerCredentials();
-    cache.set("key", auth.access_token, auth.expires_in)
+    const auth = await getOwnerCredentials().catch((err) => console.log("Connection Error"));
+    if (auth)
+      cache.set("key", auth.access_token, auth.expires_in)
   }
 
   callback(cache.get("key"), req, res);
@@ -43,11 +44,11 @@ const cmsComponents = async (key, req, res) => {
       }, rejectUnauthorized: false,
       method: 'get'
 
-    }).then((response) => res.render('index', { data: response.data,siteId:param.siteId })).catch((er) => {  res.render('index', { error: er.response.data.errors }) })
+    }).then((response) => res.json({ data: response.data, siteId: param.siteId })).catch((er) => { res.json({ error: er.response.data.errors }) })
 }
 
-const cmsComponentDetails=async (key, req, res)=>{
- 
+const cmsComponentDetails = async (key, req, res) => {
+
   axios.request({
     url: `https://${domain}/cmswebservices/v1/sites/${req.params.siteId}/cmsitems/${req.params.id}`,
     headers: {
@@ -55,10 +56,43 @@ const cmsComponentDetails=async (key, req, res)=>{
     }, rejectUnauthorized: false,
     method: 'get'
 
-  }).then((response) =>{ res.render('index', { cmsItemData: response.data })}).catch((er) => {  res.render('index', { error: er.response.data.errors }) })
+  }).then((response) => { res.json( { cmsItemData: response.data }) }).catch((er) => { res.json({ error: er.response.data.errors }) })
 
 
 }
 
 
-module.exports = { auth, cmsComponents,cmsComponentDetails }
+const types = async (key, req, res) => {
+
+  axios.request({
+    url: `https://${domain}/cmswebservices/v1/types`,
+    headers: {
+      Authorization: "Bearer " + key,
+    }, rejectUnauthorized: false,
+    method: 'get'
+
+  }).then((response) => { res.json({ types: response.data }) }).catch((er) => { res.json({ error: er.response.data.errors }) })
+
+
+}
+
+
+
+const pageTemplates = async (key, req, res) => {
+  const params = req.query
+
+  axios.request({
+    url: `https://${domain}/cmswebservices/v1/sites/${params.siteId}/catalogs/${params.catalog}/versions/${params.catalogVersion}/pagetemplates?pageTypeCode=${params.pageType}`,
+    headers: {
+      Authorization: "Bearer " + key,
+    }, rejectUnauthorized: false,
+    method: 'get'
+
+  }).then((response) => { res.json( { templates: response.data, siteId: params.siteId }) }).catch((er) => { res.json( { error: er.response.data.errors }) })
+
+
+}
+
+
+
+module.exports = { auth, cmsComponents, cmsComponentDetails, types, pageTemplates }
