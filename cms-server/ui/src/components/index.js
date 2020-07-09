@@ -11,7 +11,7 @@ export const Header = () => {
 }
 
 export const SelectDropDown = (props) => {
-    console.log(props)
+
     var data = props.input
 
     return (
@@ -24,7 +24,7 @@ export const SelectDropDown = (props) => {
 }
 
 export const CatalogSelectDropDown = (props) => {
-    console.log(props)
+
     return (
 
         <select name={props.name} className="ui dropdown">

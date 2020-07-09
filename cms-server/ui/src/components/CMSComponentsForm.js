@@ -10,9 +10,6 @@ class CMSComponentsForm extends React.Component {
         var sites = props.types.sites
         var cat = find(sites, (el) => el.uid === ev.target.value)
         props.catalogs(cat)
-
-
-
     }
     componentDidMount() {
         this.props.sites()
@@ -20,7 +17,7 @@ class CMSComponentsForm extends React.Component {
 
 
     render() {
-        console.log(this.props)
+        
         return (
             <React.Fragment>
                 <form method="get" action="/app/page-components" className="ui form">

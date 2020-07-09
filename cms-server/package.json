@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build && node src/server.js",
     "setup": "npm install && cd ui && npm install && cd ..",
-    "build": "cd ui && npm run build && cd .. && npm run copy",
+    "build": "cd ui && npm run build && cd .. && npm run copy && echo \"Server Started\"",
     "copy": "cpy ui/build/* public/build/ && cpy ui/build/static/js/* public/build/static/js"
   },
   "author": "",
