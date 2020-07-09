@@ -24,5 +24,13 @@ export const componentData=(state={},action)=>{
     return state;
 }
 
+export const catalogs=(state={},action)=>{
+    if(action.type==='CATALOGS'){
+       
+        return {...state,...action.payload}
+    }
+    return state;
+}
 
-export default combineReducers({pageComponents,sites,componentData})
+
+export default combineReducers({pageComponents,sites,componentData,catalogs})

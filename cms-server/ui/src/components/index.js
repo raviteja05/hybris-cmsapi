@@ -2,28 +2,33 @@ import React from 'react'
 import axios from 'axios'
 import CMSComponentsForm from './CMSComponentsForm'
 
-
-
-
-//hardcoded now- To be refactored after integration with API
-//const sites={"sites":[{"contentCatalogs":["string"],"name":{},"previewUrl":"string","uid":"TH"},{"contentCatalogs":["string"],"name":{},"previewUrl":"string","uid":"FC"},{"contentCatalogs":["string"],"name":{},"previewUrl":"string","uid":"FJ"},{"contentCatalogs":["string"],"name":{},"previewUrl":"string","uid":"CR"}]}
-
 export const Header = () => {
     return (
         <div className="ui segment">
-           <CMSComponentsForm/>
+            <CMSComponentsForm />
         </div>
     )
 }
 
-export const SelectDropDown=(props)=>{
+export const SelectDropDown = (props) => {
     console.log(props)
-    var data=props.input
-    
+    var data = props.input
+
     return (
-        
+
+        <select name={props.name} className="ui dropdown" onChange={props.onChange}>
+            {data.map(el => <option key={`${el.uid}`} value={`${el.uid}`}>{el.uid}</option>)}
+        </select>
+
+    )
+}
+
+export const CatalogSelectDropDown = (props) => {
+    console.log(props)
+    return (
+
         <select name={props.name} className="ui dropdown">
-        {data.map(el=><option key={`${el.uid}`} value={`${el.uid}`}>{el.uid}</option>)}
+            {props.input.map(el => <option key={`${el}`} value={`${el}`}>{el}</option>)}
         </select>
 
     )
