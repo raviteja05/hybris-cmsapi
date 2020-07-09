@@ -8,5 +8,21 @@ export const pageComponents=(state={},action)=>{
     return state;
 }
 
+export const sites=(state={},action)=>{
+    if(action.type==='FETCH_SITES'){
+        
+        return {...state,...action.payload}
+    }
+    return state;
+}
 
-export default combineReducers({pageComponents})
+export const componentData=(state={},action)=>{
+    if(action.type==='COMPONENT_DATA'){
+        
+        return {...state,...action.payload}
+    }
+    return state;
+}
+
+
+export default combineReducers({pageComponents,sites,componentData})

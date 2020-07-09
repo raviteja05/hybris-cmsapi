@@ -56,7 +56,7 @@ const cmsComponentDetails = async (key, req, res) => {
     }, rejectUnauthorized: false,
     method: 'get'
 
-  }).then((response) => { res.json( { cmsItemData: response.data }) }).catch((er) => { res.json({ error: er.response.data.errors }) })
+  }).then((response) => { res.json({ cmsItemData: response.data }) }).catch((er) => { res.json({ error: er.response.data.errors }) })
 
 
 }
@@ -66,6 +66,19 @@ const types = async (key, req, res) => {
 
   axios.request({
     url: `https://${domain}/cmswebservices/v1/types`,
+    headers: {
+      Authorization: "Bearer " + key,
+    }, rejectUnauthorized: false,
+    method: 'get'
+
+  }).then((response) => { res.json({ types: response.data }) }).catch((er) => { res.json({ error: er.response.data.errors }) })
+
+
+}
+const sites = async (key, req, res) => {
+
+  axios.request({
+    url: `https://${domain}/cmswebservices/v1/sites`,
     headers: {
       Authorization: "Bearer " + key,
     }, rejectUnauthorized: false,
@@ -88,11 +101,11 @@ const pageTemplates = async (key, req, res) => {
     }, rejectUnauthorized: false,
     method: 'get'
 
-  }).then((response) => { res.json( { templates: response.data, siteId: params.siteId }) }).catch((er) => { res.json( { error: er.response.data.errors }) })
+  }).then((response) => { res.json({ templates: response.data, siteId: params.siteId }) }).catch((er) => { res.json({ error: er.response.data.errors }) })
 
 
 }
 
 
 
-module.exports = { auth, cmsComponents, cmsComponentDetails, types, pageTemplates }
+module.exports = { auth, cmsComponents, cmsComponentDetails, types, pageTemplates, sites }
