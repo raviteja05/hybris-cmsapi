@@ -16,12 +16,14 @@ export const Header = () => {
     )
 }
 
-export const SelectDropDown=(input)=>{
-    var data={...input}
+export const SelectDropDown=(props)=>{
+    console.log(props)
+    var data=props.input
+    
     return (
         
-        <select name="siteId" className="ui dropdown">
-        {data.input.map(el=><option key={`${el.uid}`} value={`${el.uid}`}>{el.uid}</option>)}
+        <select name={props.name} className="ui dropdown">
+        {data.map(el=><option key={`${el.uid}`} value={`${el.uid}`}>{el.uid}</option>)}
         </select>
 
     )

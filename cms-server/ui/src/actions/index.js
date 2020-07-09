@@ -15,9 +15,10 @@ export const sites = (params) => {
     }
 }
 
-export const component = (siteId,uuid) => {
+export const component = (params) => {
+    console.log(params)
     return async (dispatch) => {
-        const resp = await axios.get(`/cms/${siteId}/${uuid}`)
+        const resp = await axios.get(`/cms/${params.siteId}/${params.componentUuid}`)
         dispatch({ type: 'COMPONENT_DATA', payload: resp.data })
     }
 }

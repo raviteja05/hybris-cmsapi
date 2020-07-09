@@ -17,7 +17,7 @@ class CMSComponentsForm extends React.Component{
             <div className="ui row">
                 <div className="ui column">Site Id </div>
                 <div className="ui two wide column">
-                  {this.props.types? <SelectDropDown input={this.props.types.sites}/>:""}
+                  {this.props.types? <SelectDropDown name="siteId" input={this.props.types.sites}/>:""}
                 </div>
                 <div className="ui column">Catalog</div>
                 <div className="ui two wide column">

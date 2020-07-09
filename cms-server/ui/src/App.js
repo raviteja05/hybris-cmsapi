@@ -11,7 +11,7 @@ function App() {
       <Router>
       
       <Route exact path="/app/page-components"><Header/><PageComponentsView/></Route>
-      <Route exact path="/app/components/:siteId/:componentUuid"><Header/><ComponentDetailsView/></Route>
+      <Route exact path="/app/components/:siteId/:componentUuid" component={ComponentDetailsView}/>
       </Router>
     </div>
   );

@@ -26,7 +26,7 @@ class PageComponentsView extends React.Component {
                 <tbody>
                     {this.props.data ?this.props.data.data? this.props.data.data.pageContentSlotComponentList.map(el =>
                         <tr key={el.componentUuid}>
-                            <td data-label="comId"><a href={`/component/${params.siteId}/${el.componentUuid}`}>{el.componentId}</a></td>
+                            <td data-label="comId"><a href={`/app/components/${params.siteId}/${el.componentUuid}`}>{el.componentId}</a></td>
                             <td data-label="slotId">{el.slotId}</td>
                             <td data-label="pos">{el.position}</td>
                         </tr>) : <tr></tr>:<tr></tr>}
